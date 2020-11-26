@@ -1,20 +1,38 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, Component } from 'react'
 import MoreButton from '../components/MoreButton'
 import Sushi from '../components/Sushi'
+import { connect } from 'react-redux'
+import { getSushis } from '../redux/actionCreator'
 
-const SushiContainer = (props) => {
-  const {sushis, moreSushis, eat} = props
+class SushiContainer extends Component {
 
-  const sushiCards = sushis.map(sushi => <Sushi {...sushi} key={sushi.id} eat={eat} />)
+  componentDidMount(){
+    this.props.getSushis()
+  }
 
-  return (
-    <Fragment>
-      <div className="belt">
-        { sushiCards }
-        <MoreButton moreSushis={moreSushis} />
-      </div>
-    </Fragment>
-  )
+  render(){
+    const {sushis, offset} = this.props
+    const fourSushis = sushis.slice(offset, offset + 4)
+    const sushiCards = fourSushis.map(sushi => <Sushi {...sushi} key={sushi.id} />)
+    return (
+      <Fragment>
+        <div className="belt">
+          { sushiCards }
+          <MoreButton />
+        </div>
+      </Fragment>
+    )
+  }
 }
 
-export default SushiContainer
+const mapStateToProps = (state) => ({
+  sushis: state.sushis,
+  offset: state.offset
+})
+
+// const mapDispatchToProps = (dispatch) => ({
+//   // setSushis: (sushis) => dispatch({type: "SET_SUSHIS", payload: {sushis}}),
+//   getSushis: () => dispatch(getSushis())
+// })
+
+export default connect(mapStateToProps, {getSushis})(SushiContainer)

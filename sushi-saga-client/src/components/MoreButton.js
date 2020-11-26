@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { moreSushis } from '../redux/actionCreator'
 
 const MoreButton = (props) => {
     return <button onClick={props.moreSushis}>
@@ -6,4 +8,4 @@ const MoreButton = (props) => {
           </button>
 }
 
-export default MoreButton
+export default connect(null, { moreSushis })(MoreButton)

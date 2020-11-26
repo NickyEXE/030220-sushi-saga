@@ -12,6 +12,16 @@ We've had a bit of trouble with our patented Sushi Saga conveyor belt system, so
 
 ## Setup
 
+<!-- SushiContainer Should Know About Sushis, and what the OFFSET is -->
+<!-- More Button should be able to Change The Offset -->
+<!-- Sushi should be able to eat a Sushi -->
+Table should know how much money they have remaining, and how many sushis they've eaten
+
+
+DevTools:
+window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
+
 ### Server
 
 To get you going, we've got a backend just chock full of sushi just waiting to be eaten! To get get these guys, you're going to have to do the follow:

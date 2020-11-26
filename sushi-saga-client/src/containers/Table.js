@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import { connect } from 'react-redux'
 
 const Table = (props) => {
 
@@ -37,4 +38,13 @@ const Table = (props) => {
   )
 }
 
-export default Table
+const mapStateToProps = (state) => {
+  const eatenSushis = state.sushis.filter(sushi => sushi.eaten)
+  const amountRemaining = 200 - eatenSushis.reduce((accumulator, sushi) => accumulator + sushi.price, 0)
+  return {
+    eatenSushis,
+    amountRemaining
+  }
+}
+
+export default connect(mapStateToProps)(Table)

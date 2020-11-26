@@ -1,4 +1,6 @@
 import React, { Fragment } from 'react'
+import { connect } from 'react-redux'
+import { eat } from "../redux/actionCreator"
 
 const Sushi = (props) => {
   const {name, img_url, price, eaten, eat, id} = props
@@ -15,4 +17,8 @@ const Sushi = (props) => {
   )
 }
 
-export default Sushi
+// const mdp = (dispatch) => ({
+//   eat: (id) => dispatch(eat(id))
+// })
+
+export default connect(null, { eat })(Sushi)
